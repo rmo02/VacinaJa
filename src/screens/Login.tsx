@@ -1,8 +1,13 @@
-import { Center, HStack, Heading, Image, Input, Text, VStack } from "native-base";
+import { Center, Heading, Image, Input, ScrollView, Text, VStack, useToast } from "native-base";
 import { Controller, useForm } from "react-hook-form";
 import { Button } from "../components/Button";
-import { TouchableOpacity } from "react-native";
-import doctors from '../../assets/doctors.png'
+import { TouchableOpacity, BackHandler } from "react-native";
+import doctors from '../../assets/doctors.png';
+import { useNavigation } from "@react-navigation/native";
+import React, {useState, useEffect} from "react";
+import { AuthNavigatorRoutesProps } from "../routes/auth.routes";
+import { AppRoutes } from "../routes/app.route";
+
 
 type FormDataProps = {
   email: string;
@@ -10,6 +15,17 @@ type FormDataProps = {
 };
 
 export function Login() {
+  const navigation = useNavigation<AuthNavigatorRoutesProps>();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', () =>{
+      return true
+    })
+  }, [])
+
+  const toast = useToast();
+
   const {
     control,
     handleSubmit,
@@ -18,7 +34,33 @@ export function Login() {
     defaultValues: {},
   });
 
+  const handleLogin = (data: FormDataProps) => {
+    // Verificar os dados de login fornecidos pelo usuário
+    if (data.email === "ramon@email.com" && data.password === "123456") {
+      setIsLoggedIn(true);
+    } else {
+      const title = 'Usuário inválido, verifique suas credenciais.';
+      toast.show({
+        title,
+        placement: 'top',
+        bgColor: 'red.500'
+      });
+    }
+  };
+  
+  if (isLoggedIn) {
+    // Se o usuário estiver logado, redirecione para as rotas do aplicativo
+    return <AppRoutes />;
+  }
+  
+
+
   return (
+    <ScrollView
+    contentContainerStyle={{ flexGrow: 1 }}
+    keyboardShouldPersistTaps="handled"
+    scrollEnabled={false}
+    >
     <VStack
       flex={1}
       bg={{
@@ -40,7 +82,7 @@ export function Login() {
             source={doctors}
             alt="logo"
             mt={5}
-            h={120}
+            h={140}
             />
         </VStack>
       </VStack>
@@ -83,6 +125,7 @@ export function Login() {
             rules={{ required: "Informe a senha" }}
             render={({ field: { onChange, value } }) => (
               <Input
+              keyboardType="number-pad"
                 secureTextEntry
                 mt={5}
                 bg="blueGray.200"
@@ -100,16 +143,18 @@ export function Login() {
             borderRadius={10}
             title="Entrar"
             mt={4}
-            onPress={() => console.log("entrar")}
+            onPress={handleSubmit(handleLogin)}
           />
 
           <Center mt={10}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('cadastro')}>
               <Text>Não tem acesso? Clique aqui</Text>
             </TouchableOpacity>
           </Center>
         </VStack>
       </VStack>
     </VStack>
+    </ScrollView>
+
   );
 }
