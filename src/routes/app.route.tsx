@@ -15,6 +15,7 @@ import { Localvacina } from "../screens/LocalVacina";
 import { Vacinas } from "../screens/Vacinas";
 import { Perfil } from "../screens/Perfil";
 import { Noticias } from "../screens/Noticias";
+import { Noticias1 } from "../screens/Noticias1";
 
 type AppRoutes = {
   home: undefined;
@@ -22,6 +23,7 @@ type AppRoutes = {
   perfil: undefined;
   vacinas: undefined;
   noticias: undefined;
+  noticias1: undefined;
 };
 
 export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>;
@@ -37,6 +39,7 @@ export function AppRoutes() {
     <Navigator
       screenOptions={{
         headerShown: false,
+        tabBarShowLabel:false,
         tabBarActiveTintColor: colors.amber[500],
         tabBarInactiveTintColor: colors.blue[500],
         tabBarStyle: {
@@ -97,6 +100,11 @@ export function AppRoutes() {
       <Screen
         name="noticias"
         component={Noticias}
+        options={{ tabBarButton: () => null }}
+      />
+      <Screen
+        name="noticias1"
+        component={Noticias1}
         options={{ tabBarButton: () => null }}
       />
     </Navigator>

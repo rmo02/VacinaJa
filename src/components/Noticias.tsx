@@ -12,8 +12,9 @@ export function Noticias() {
 
   return (
     <VStack bg="white" mt={2} borderRadius={10} py={2} px={5}>
+      <VStack>
       <TouchableOpacity onPress={() => navigation.navigate('noticias')}>
-        <HStack alignItems="center" h={10}>
+        <HStack alignItems="center" h={30} w='full'>
           <Box
             bg="blue.300"
             borderRadius={5}
@@ -25,7 +26,7 @@ export function Noticias() {
             <FontAwesome5 name="medkit" size={24} color="white" />
           </Box>
           <VStack px={5} flex={1}>
-            <Text fontFamily="bold" fontSize="md">
+            <Text fontFamily="bold" >
               Calendário de vacinação
             </Text>
             <Text>Novo calendário de vacinação já</Text>
@@ -34,8 +35,10 @@ export function Noticias() {
             <MaterialIcons name="arrow-forward-ios" size={20} color="gray" />
           </Box>
         </HStack>
-        <VStack borderTopWidth={0.5} borderColor="gray.200" mt={1}></VStack>
+        <VStack borderTopWidth={0.5} borderColor="gray.200" mt={3}></VStack>
       </TouchableOpacity>
+      </VStack>
+
 
       <VStack mt={2}>
         <TouchableOpacity onPress={() => console.log("clicou")}>
@@ -51,7 +54,7 @@ export function Noticias() {
               <MaterialIcons name="sports-handball" size={24} color="white" />
             </Box>
             <VStack px={5} flex={1}>
-              <Text fontFamily="bold" fontSize="md">
+              <Text fontFamily="bold" >
                 Cuide-se
               </Text>
               <Text>Dicas para cuidar da saúde</Text>
@@ -60,12 +63,12 @@ export function Noticias() {
               <MaterialIcons name="arrow-forward-ios" size={20} color="gray" />
             </Box>
           </HStack>
-          <VStack borderTopWidth={0.5} borderColor="gray.200" mt={1}></VStack>
+          <VStack borderTopWidth={0.5} borderColor="gray.200" mt={3}></VStack>
         </TouchableOpacity>
       </VStack>
 
       <VStack mt={2}>
-        <TouchableOpacity onPress={() => console.log("clicou")}>
+        <TouchableOpacity onPress={() => navigation.navigate('noticias1')}>
           <HStack alignItems="center" h={10}>
             <Box
               bg="blue.300"
@@ -75,19 +78,19 @@ export function Noticias() {
               h={30}
               w={30}
             >
-              <MaterialCommunityIcons name="food-fork-drink" size={24} color="white" />
+            <MaterialCommunityIcons name="stethoscope" size={24} color="white" />
             </Box>
             <VStack px={5} flex={1}>
-              <Text fontFamily="bold" fontSize="md">
-                Cuide-se
+              <Text fontFamily="bold" >
+                COVID-19
               </Text>
-              <Text>Dicas para boa alimentação</Text>
+              <Text>Novas datas de vacinação</Text>
             </VStack>
             <Box flex={0.1}>
             <MaterialIcons name="arrow-forward-ios" size={20} color="gray" />
             </Box>
           </HStack>
-          <VStack borderTopWidth={0.5} borderColor="gray.200" mt={1}></VStack>
+          <VStack borderTopWidth={0.5} borderColor="gray.200" mt={3}></VStack>
         </TouchableOpacity>
       </VStack>
 
@@ -105,16 +108,16 @@ export function Noticias() {
               <MaterialCommunityIcons name="hospital-building" size={24} color="white" />
             </Box>
             <VStack px={5} flex={1}>
-              <Text fontFamily="bold" fontSize="md">
+              <Text fontFamily="bold" >
                 Mais Hospitais
               </Text>
-              <Text>Confira as novas novidades</Text>
+              <Text>novas unidades</Text>
             </VStack>
             <Box flex={0.1}>
               <MaterialIcons name="arrow-forward-ios" size={20} color="gray" />
             </Box>
           </HStack>
-          <VStack borderTopWidth={0.5} borderColor="gray.200" mt={1}></VStack>
+          <VStack borderTopWidth={0.5} borderColor="gray.200" mt={3}></VStack>
         </TouchableOpacity>
       </VStack>
 

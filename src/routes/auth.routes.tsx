@@ -17,7 +17,7 @@ export function AuthRoutes() {
   return (
     <Navigator screenOptions={{ headerShown: false }}>
       <Screen name="splash" component={SplashScreen} />
-      <Screen name="login" component={Login} />
+      <Screen name="login" component={Login}  options={{ gestureEnabled: false}}/>
       <Screen name="cadastro" component={Cadastro} />
     </Navigator>
   );

@@ -11,7 +11,7 @@ export function NoticiasDetails() {
 
         <VStack mt={5}>
           <Center>
-            <Heading>Novo Clanedário de Vacinação</Heading>
+            <Heading>Novo Canledário de Vacinação</Heading>
           </Center>
 
           <VStack mt={5} px={5}>
